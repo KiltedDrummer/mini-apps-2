@@ -9,8 +9,21 @@
 }
 
 
-
-
 /* *********************************
-        Main CSS for History
+        Main CSS for Results
    *********************************/
+
+
+   /* *********************************
+        Main CSS for Navigation
+   *********************************/
+
+  ul {
+     list-style-type: none;
+     margin: 0 auto;
+   }
+
+   li {
+     float: left;
+     margin: 0 5px;
+   }

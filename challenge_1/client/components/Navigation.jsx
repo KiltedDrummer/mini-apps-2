@@ -2,6 +2,11 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 
 const Navigation = ({ count }) => {
+  if (count === 0) {
+    return (
+      <div></div>
+    );
+  }
   return (
     <div id="nav">
       <ReactPaginate
