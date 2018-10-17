@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Results from './Results';
+import Navigation from './Navigation';
 
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
       year: '',
       era: '',
       events: 'New',
+      count: 0,
     }
     this.searchByDate = this.searchByDate.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,10 +44,11 @@ class App extends React.Component {
 
   searchByDate(date) {
     console.log(`/events/?date=${date}`)
-    axios(`/events/?date=${date}`)
+    axios(`/events/?date=${date}&_page=1&_limit=5`)
       .then(results => {
         console.log(results);
         this.setState({
+          count: results.headers["x-total-count"],
           events: results.data, 
         });
       });
@@ -60,6 +63,7 @@ class App extends React.Component {
           handleSubmit={this.handleSubmit}
         />
         <Results entries={this.state.events} />
+        <Navigation count={this.state.count} />
       </div>
     );
   }
