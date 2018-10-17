@@ -10,7 +10,7 @@ const DateSearch = ({ handleChange, handleSubmit }) => {
           <option value="AD">AD</option>
           <option value="BC">BC</option>
         </select>
-        <input type="submit" value="Search" onClick={handleSubmit} />
+        <input type="submit" name="dateSearch" value="Search" onClick={handleSubmit} />
       </form>
     )
 }

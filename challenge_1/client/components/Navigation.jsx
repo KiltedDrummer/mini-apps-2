@@ -14,7 +14,7 @@ const Navigation = ({ count }) => {
         nextLabel={"next"}
         breakLabel={<a href="">...</a>}
         breakClassName={"break-me"}
-        pageCount={Math.ceil(count / 5)}
+        pageCount={Math.ceil(count / 10)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
       />

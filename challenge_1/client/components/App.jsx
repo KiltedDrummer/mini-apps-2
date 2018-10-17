@@ -11,40 +11,58 @@ class App extends React.Component {
     this.state = {
       year: '',
       era: '',
+      keyword: '',
       events: 'New',
       count: 0,
     }
-    this.searchByDate = this.searchByDate.bind(this);
+    this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    console.log(e.target.value);
     const name = e.target.name;
-    if (name === 'year') {
-      this.setState({
-        year: e.target.value
-      })
-    } else if (name === 'era') {
-      this.setState({
-        era: e.target.value
-      })
-    }
+    const update = {
+      year: () => {
+        this.setState({
+          year: e.target.value
+        })
+      },
+      era: () => {
+        this.setState({
+          era: e.target.value
+        })
+      },
+      keyword: () => {
+        this.setState({
+          keyword: e.target.value
+        })
+      },
+    };
+
+    update[e.target.name]();
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let query = Number(this.state.year);
-    if (this.state.era === 'BC') {
-      query *= -1;
+    const searches = {
+      dateSearch: () => {
+        let query = Number(this.state.year);
+        if (this.state.era === 'BC') {
+          query *= -1;
+        }
+        this.search('date', query);
+      },
+      keywordSearch: () => {
+        this.search('q', this.state.keyword);
+      },
     }
-    this.searchByDate(query);
+    searches[e.target.name]();
   }
 
-  searchByDate(date) {
-    console.log(`/events/?date=${date}`)
-    axios(`/events/?date=${date}&_page=1&_limit=5`)
+  search(type, query) {
+    console.log(`/events/?${type}=${query}`)
+    axios(`/events/?${type}=${query}&_page=1&_limit=10`)
       .then(results => {
         console.log(results);
         this.setState({
@@ -58,7 +76,6 @@ class App extends React.Component {
     return (
       <div>
         <Header
-          searchByDate={this.searchByDate}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
