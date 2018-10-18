@@ -2,7 +2,7 @@ import React from 'react';
 import Graph from './Graph';
 import Info from './Info';
 
-const Details = ({ coin, history }) => {
+const Details = ({ coin, history, select, graphType, handleChange, handleSearch }) => {
   const dates = [];
   const prices = [];
   const datePricePairs = Object.entries(history).sort((a, b) => {
@@ -21,7 +21,13 @@ const Details = ({ coin, history }) => {
   
   return (
     <div id="details">
-      <Graph dates={dates} prices={prices}/>
+      <Graph dates={dates}
+      prices={prices}
+      select={select}
+      graphType={graphType}
+      handleChange={handleChange}
+      handleSearch={handleSearch}
+      />
       <Info coin={coin} />
     </div>
   )

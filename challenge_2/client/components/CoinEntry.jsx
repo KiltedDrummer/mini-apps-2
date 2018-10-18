@@ -5,7 +5,7 @@ const CoinEntry = ({ coin }) => {
 
   return (
     <div className="coin">
-      <h1 className="coinName">Bitcoin</h1>
+      <h1 className="coinName">{coin.chartName}</h1>
       <p className="currentRate"><strong>Current: </strong>{` ${usd}`}</p>
       <p className="currentTime">{`Updated on: ${coin.time.updated}`}</p>
       <p className="disclaimer">{coin.disclaimer}</p>

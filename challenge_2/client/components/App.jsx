@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Coins from './Coins';
 import Details from './Details';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,10 +14,6 @@ class App extends React.Component {
       history: {
         "bpi": {
           "2013-09-01": 128.2597,
-          "2013-09-02": 127.3648,
-          "2013-09-03": 127.5915,
-          "2013-09-04": 120.5738,
-          "2013-09-05": 120.5333,
         },
         "disclaimer": "This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD.",
         "time": {
@@ -24,15 +21,53 @@ class App extends React.Component {
           "updatedISO": "2013-09-06T00:03:00+00:00"
         },
       },
-      dates: [],
-      prices: [],
-    }
+      startDate: '2018-10-01',
+      endDate: '2018-10-18',
+      graphType: 'bar',
+    };
+    this.select = this.select.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   };
 
+  select(e) {
+    this.setState({
+      graphType: e.target.value,
+    });
+  }
+
+  handleChange(e) {
+    const key = e.target.name;
+    const newState = {}
+    newState[key] = e.target.value;
+    this.setState(newState);
+  }
+
+  handleSearch(e) {
+    e.preventDefault();
+
+    axios(`https://api.coindesk.com/v1/bpi/historical/close.json?start=${this.state.startDate}&end=${this.state.endDate}`)
+      .then(results => {
+        this.setState({
+          history: results.data,
+        });
+      });
+  }
+
   componentDidMount() {
-    // const dates = this.state.history.map(entry => {
-      
-    // })
+    axios('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(results => {
+        this.setState({
+          currentCoins: [results.data],
+        });
+      });
+    
+    axios(`https://api.coindesk.com/v1/bpi/historical/close.json?start=${this.state.startDate}&end=${this.state.endDate}`)
+      .then(results => {
+        this.setState({
+          history: results.data,
+        });
+      });
   }
 
   render() {
@@ -41,7 +76,14 @@ class App extends React.Component {
         <Header />
         <div id="main">
           <Coins coins={this.state.currentCoins} />
-          <Details coin={this.state.currentCoins[0]} history={this.state.history.bpi} />
+          <Details
+          graphType={this.state.graphType}
+          coin={this.state.currentCoins[0]}
+          history={this.state.history.bpi}
+          select={this.select}
+          handleChange={this.handleChange}
+          handleSearch={this.handleSearch}
+          />
         </div>
       </div>
     )

@@ -12,22 +12,23 @@ Change this year:   xx.x%
 
 
 const Info = ({ coin }) => {
-  const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 2 }).format(coin.bpi.USD.rate_float)
-  const cny = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'CNY', maximumSignificantDigits: 2 }).format(coin.bpi.CNY.rate_float)
+  const Currencies = Object.keys(coin.bpi).map(code => {
+    const amount = new Intl.NumberFormat('en-US', { style: 'currency', currency: code, maximumSignificantDigits: 2 }).format(coin.bpi[code].rate_float)
+    return (
+      <li className="rateItem">
+        <strong>{code} :</strong>{` ${amount}`}
+      </li>
+    )
+  });
 
   return (
     <div id="info">
-      <h1 className="coinName">Bitcoin</h1>
+      <h1 className="coinName">{coin.chartName}</h1>
       <h2>Prices</h2>
       <ul className="ratesList">
-        <li className="rateItem">
-          <strong>{coin.bpi.USD.code} :</strong>{` ${usd}`}
-        </li>
-        <li className="rateItem">
-          <strong>{coin.bpi.CNY.code} :</strong>{` ${cny}`}
-        </li>
+        { Currencies }
       </ul>
-      
+
       <p className="currentTime">{`Updated on: ${coin.time.updated}`}</p>
       <p className="disclaimer">{coin.disclaimer}</p>
 

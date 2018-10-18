@@ -29,7 +29,7 @@
 #coins {
   grid-area: coins;
   border-right: 3px solid black;
-  width: 650px;
+  width: 675px;
 }
 
 #details {
@@ -56,7 +56,7 @@ Coin List / Left Side
 .currentTime,
 .disclaimer {
   margin: 0px;
-  width: 650px;
+  width: 675px;
 }
 
 .currentRate {
@@ -92,8 +92,8 @@ h2 {
 #info {
   grid-area: info;
   border-top: 3px solid grey;
-  margin-left: -28px;
-  padding-left: 28px;
+  margin-left: -15px;
+  padding-left: 15px;
 }
 
 ul {
