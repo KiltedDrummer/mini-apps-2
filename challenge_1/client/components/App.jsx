@@ -16,7 +16,8 @@ class App extends React.Component {
       topic: 'category1',
       topicQuery: 'By place',
       page: 1,
-      current: []
+      current: [],
+      modal: false,
     }
     this.search = this.search.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -71,6 +72,9 @@ class App extends React.Component {
   }
 
   render() {
+    if (this.state.modal) {
+      return 
+    } 
     return (
       <div>
         <Header

@@ -23,19 +23,26 @@ const ResultEntry = ({ event }) => {
   if (event.category1 === "By place") {
     return (
       <div className="event">
-        <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
-        <button className="edit">Edit</button>
-        <div className="entryTopic"><strong>Place: </strong> { event.category2 }</div>
-        <h4>Description:</h4>
-        <p>{ parseDescription(event.description) }</p>
+        <div className="details">
+          <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
+          <button className="edit">Edit</button>
+          <div className="entryTopic"><strong>Place: </strong> { event.category2 }</div>
+        </div>
+        <div className="description">
+          <h4>Description:</h4>
+          <p>{ parseDescription(event.description) }</p>
+        </div>
       </div>
     )
   } else if (event.category1 === "By topic") {
     return (
       <div className="event">
+        <div className="details">
         <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
         <button className="edit">Edit</button>
         <div className="entryTopic"><strong>Topic: </strong> { event.category2 }</div>
+        </div>
+        <div className="description">
         <h4>Description:</h4>
         <p>{ parseDescription(event.description) }</p>
       </div>
@@ -43,9 +50,12 @@ const ResultEntry = ({ event }) => {
   } else {
     return (
       <div className="event">
+          <div className="details">
         <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
         <button className="edit">Edit</button>
         <div className="entryTopic"><strong>Range: </strong> { parseRange(event.category1) }</div>
+          </div>
+          <div className="description">
         <h4>Description:</h4>
         <p>{ parseDescription(event.description) }</p>
       </div>

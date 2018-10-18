@@ -25,6 +25,36 @@
 
 .event {
   border-bottom: 3px dashed black;
+  display: grid;
+  grid-template-areas: "details"
+                       "description"
+}
+
+.details {
+  grid-area: details;
+  display: grid;
+  grid-template-areas: "date topic edit"
+}
+
+.entryDate {
+  grid-area: date;
+}
+
+.entryTopic {
+  grid-area: topic;
+}
+
+.edit {
+  grid-area: edit;
+  -webkit-appearance: none;
+  height: 26px;
+  width: 40px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 2px 2px #80808017;
+}
+
+.description {
+  grid-area: description;
 }
 
 /* *********************************
