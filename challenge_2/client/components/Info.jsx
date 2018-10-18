@@ -18,14 +18,19 @@ const Info = ({ coin }) => {
   return (
     <div id="info">
       <h1 className="coinName">Bitcoin</h1>
+      <h2>Prices</h2>
+      <ul className="ratesList">
+        <li className="rateItem">
+          <strong>{coin.bpi.USD.code} :</strong>{` ${usd}`}
+        </li>
+        <li className="rateItem">
+          <strong>{coin.bpi.CNY.code} :</strong>{` ${cny}`}
+        </li>
+      </ul>
+      
       <p className="currentTime">{`Updated on: ${coin.time.updated}`}</p>
       <p className="disclaimer">{coin.disclaimer}</p>
 
-      <h2>Prices</h2>
-      <p className="currentRate">
-        <strong>{coin.bpi.USD.code} :</strong>{` ${usd}`}
-        <strong>{coin.bpi.CNY.code} :</strong>{` ${cny}`}
-      </p>
     </div>
   )
   
