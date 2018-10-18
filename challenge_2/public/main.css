@@ -34,7 +34,17 @@
 
 #details {
   grid-area: details;
+  display: grid;
+  grid-template-areas: "graph"
+                       "info";
+  border-right: 3px solid grey;
 }
+
+/**********************
+
+Coin List / Left Side
+
+**********************/
 
 .coin {
   border-left: 3px solid grey;
@@ -63,3 +73,35 @@ h1 {
   margin-bottom: 2px;
   width: 400px;
 }
+
+/**********************
+
+Details / Right Side
+
+**********************/
+
+#graph {
+  grid-area: graph;
+}
+
+#info {
+  grid-area: info;
+  border-top: 3px solid grey;
+  margin-left: -28px;
+  padding-left: 28px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
