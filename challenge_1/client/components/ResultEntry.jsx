@@ -11,28 +11,43 @@ const ResultEntry = ({ event }) => {
     return formatted;
   }
 
+  const parseRange = (range) => {
+    const parsedRange = range.split('&amp;amp;amp;ndash;').join(' - ');
+    return parsedRange;
+  }
+
+  const parseDescription = (text) => {
+    return text.replace(/ampampndash/gi, ' - ')
+  }
+
   if (event.category1 === "By place") {
     return (
-      <div id="entry">
-        <div><em>Date: </em> { parseDate(event.date) }</div>
-        <div><em>Place: </em> { event.category2 }</div>
-        <p>{ event.description }</p>
+      <div className="event">
+        <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
+        <button className="edit">Edit</button>
+        <div className="entryTopic"><strong>Place: </strong> { event.category2 }</div>
+        <h4>Description:</h4>
+        <p>{ parseDescription(event.description) }</p>
       </div>
     )
   } else if (event.category1 === "By topic") {
     return (
-      <div id="entry">
-        <div><em>Date: </em> { parseDate(event.date) }</div>
-        <div><em>Topic: </em> { event.category2 }</div>
-        <p>{event.description}</p>
+      <div className="event">
+        <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
+        <button className="edit">Edit</button>
+        <div className="entryTopic"><strong>Topic: </strong> { event.category2 }</div>
+        <h4>Description:</h4>
+        <p>{ parseDescription(event.description) }</p>
       </div>
     )
   } else {
     return (
-      <div id="entry">
-        <div><em>Date: </em> { parseDate(event.date) }</div>
-        <div><em>Range: </em> { event.category1 }</div>
-        <p>{event.description}</p>
+      <div className="event">
+        <div className="entryDate"><strong>Date: </strong> { parseDate(event.date) }</div>
+        <button className="edit">Edit</button>
+        <div className="entryTopic"><strong>Range: </strong> { parseRange(event.category1) }</div>
+        <h4>Description:</h4>
+        <p>{ parseDescription(event.description) }</p>
       </div>
     )
   }

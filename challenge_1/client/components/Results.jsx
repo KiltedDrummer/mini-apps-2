@@ -1,19 +1,20 @@
 import React from 'react';
 import ResultEntry from './ResultEntry';
+import Navigation from './Navigation';
 
-const Results = ({ entries }) => {
+const Results = ({ entries, count, onPageChange }) => {
 
   if (entries === 'New')  {
     return (
       <div id="results">
-        Enter a year to search by!
+        Enter a year, keyword, or category to search by!
       </div>
     )
   } else if (entries.length === 0) {
     return (
       <div id="results">
-        <p>There doesn't seem to be any entries for that year...</p>
-        <p>Try another year!</p>
+        <p>There don't seem to be any entries for that...</p>
+        <p>Try another search!</p>
       </div>
     )
   } else {
@@ -24,6 +25,7 @@ const Results = ({ entries }) => {
     return (
       <div id="results">
         { entryList }
+        <Navigation count={count} onPageChange={onPageChange}/>
       </div>
     )
   }

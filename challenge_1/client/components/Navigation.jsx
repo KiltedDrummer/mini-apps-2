@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-const Navigation = ({ count }) => {
+const Navigation = ({ count, onPageChange }) => {
   if (count === 0) {
     return (
       <div></div>
@@ -17,6 +17,7 @@ const Navigation = ({ count }) => {
         pageCount={Math.ceil(count / 10)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
+        onPageChange={onPageChange}
       />
     </div>
   )

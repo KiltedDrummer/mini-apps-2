@@ -1,6 +1,7 @@
 import React from 'react';
 import DateSearch from './DateSearch';
 import KeywordSearch from './KeywordSearch';
+import TopicSearch from './TopicSearch';
 
 class Header extends React.Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class Header extends React.Component {
           handleSubmit={this.props.handleSubmit}
         />
         <KeywordSearch
+          handleChange={this.props.handleChange}
+          handleSubmit={this.props.handleSubmit}
+        />
+        <TopicSearch
           handleChange={this.props.handleChange}
           handleSubmit={this.props.handleSubmit}
         />
