@@ -1,0 +1,83 @@
+#app {
+  width: 600px;
+  text-align: center;
+}
+
+#pinsDisplay {
+  display: grid;
+  grid-template-areas: "display selector";
+}
+
+#image {
+  grid-area: display;
+  width: 400px;
+  text-align: center;
+}
+
+#pin_selector {
+  grid-area: selector;
+  text-align: center;
+  width: 150px;
+}
+
+#keypad {
+  display: grid;
+  grid-template-areas: "1 2 3";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.number {
+  height: 40px;
+  width: 40px;
+}
+
+#display {
+  display: grid;
+  grid-template-areas: "row_0""row_1""row_2""row_3";
+  text-align: center;
+}
+
+.row_0 {
+  grid-area: row_0;
+  width: 20px;
+  margin: 0 auto;
+}
+
+.row_1 {
+  grid-area: row_1;
+  width: 42px;
+  margin: 0 auto;
+}
+
+.row_2 {
+  grid-area: row_2;
+  width: 63px;
+  margin: 0 auto;
+}
+
+.row_3 {
+  grid-area: row_3;
+  width: 84px;
+  margin: 0 auto;
+}
+
+
+.down {
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+  border: 1px solid black;
+  border-radius: 17px;
+  text-align: center; 
+  margin: 1px;
+}
+
+.up {
+  display: inline-block;
+  height: 17px;
+  width: 17px;
+  border: 1px solid black;
+  border-radius: 17px;
+  margin: 1px;
+}
