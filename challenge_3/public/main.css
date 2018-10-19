@@ -32,11 +32,80 @@
   width: 40px;
 }
 
+.notAvail {
+  height: 40px;
+  width: 40px;
+  background-color: darkgrey;
+}
+
 #display {
   display: grid;
   grid-template-areas: "row_0""row_1""row_2""row_3";
   text-align: center;
 }
+
+/*************************
+ScoreCard Styling
+*************************/
+#scorecard h3 {
+  border: 1px solid black;
+  margin:0;
+  padding: 12px 2px;
+}
+
+#scorecard h4 {
+  border: 1px solid black;
+  margin: 0;
+  padding: 12px 40px;
+}
+
+#scorecard {
+  display: grid;
+  grid-template-areas: "name 1 2 3 4 5 6 7 8 9 10 total";
+}
+
+#username {
+  width: 120px;
+  border: 1px solid black;
+  height: 50px
+}
+
+.frame {
+  position: relative;
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+}
+
+.balls {
+  display: grid;
+  grid-template-areas: "ball_1 ball_2";
+  border: 1px solid black;
+  width: 52px;
+  height: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ball_1 {
+  grid-area: ball_1;
+  border-right: 1px solid black;
+}
+
+.ball_2 {
+  grid-area: ball_2;
+}
+
+.frame_score {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
+
+/*************************
+Display Styling
+*************************/
 
 .row_0 {
   grid-area: row_0;
